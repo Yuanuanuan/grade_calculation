@@ -96,6 +96,12 @@ body main section.main-part div.all-inputs form input, body main section.main-pa
   margin: 0.35rem;
   border-radius: 0.25rem;
 }
+body main section.main-part div.all-inputs form select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50%;
+}
 body main section.main-part div.all-inputs form input.class-credit {
   width: 5%;
 }

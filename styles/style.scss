@@ -100,6 +100,11 @@ body {
             border-radius: 0.25rem;
           }
 
+          select {
+            appearance: none;
+            border-radius: 50%;
+          }
+
           input.class-credit {
             width: 5%;
           }
