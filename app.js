@@ -1,16 +1,16 @@
-// let hero = document.querySelector('.hero');
-// let slider = document.querySelector('.slider');
-// let animation = document.querySelector('section.animation-wrapper');
+let hero = document.querySelector('.hero');
+let slider = document.querySelector('.slider');
+let animation = document.querySelector('section.animation-wrapper');
 
-// const time_line = new TimelineMax();
+const time_line = new TimelineMax();
 
-// time_line
-// .fromTo(hero, 1, {height: '0%'}, {height: '100%', ease: Power2.easeInOut})
-// .fromTo(hero, 1.2, {width: '80%'}, {width: '100%', ease: Power2.easeInOut})
-// .fromTo(slider, 1, {x: '-100%'}, {x: '0%', ease: Power2.easeInOut}, '-=1.2')
-// .fromTo(animation, .3, {opacity: '1'}, {opacity: '0', onComplete: () => {
-//   animation.style.display = 'none';
-// }})
+time_line
+.fromTo(hero, 1, {height: '0%'}, {height: '100%', ease: Power2.easeInOut})
+.fromTo(hero, 1.2, {width: '80%'}, {width: '100%', ease: Power2.easeInOut})
+.fromTo(slider, 1, {x: '-100%'}, {x: '0%', ease: Power2.easeInOut}, '-=1.2')
+.fromTo(animation, .3, {opacity: '1'}, {opacity: '0', onComplete: () => {
+  animation.style.display = 'none';
+}})
 
 
 
@@ -363,6 +363,38 @@ const handleSorting = (direction) => {
     `;
   }
 
+  graders = document.querySelectorAll('div.grader');
+  for (let i = 0; i < graders.length; i++) {
+    graders[i].children[3].value = objectArray[i].class_grade
+  }
+
+  let allSelects = document.querySelectorAll('select');
+  allSelects.forEach(select => {
+    changeColor(select)
+    select.addEventListener('change', (e) => {
+      setGPA();
+      changeColor(e.target);
+    })
+  })
+
+  let allCredits = document.querySelectorAll('.class-credit')
+  allCredits.forEach((credit) => {
+    credit.addEventListener('change', (e) => {
+      setGPA();
+    })
+  })
+  
+  let allTrash = document.querySelectorAll('.trash-button');
+  allTrash.forEach((trash) => {
+    trash.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.target.parentElement.parentElement.style.animation = 'scaleDown .5s ease forwards';
+      e.target.parentElement.parentElement.addEventListener('animationend', (e) => {
+        e.target.remove();
+        setGPA();
+      })
+    })
+  })
 }
 
 const merge = (a1, a2) => {
